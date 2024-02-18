@@ -32,6 +32,6 @@ The data source is [Yahoo Finance](https://finance.yahoo.com/).
 ![Web_2](https://github.com/OndrejZapletal99/Stock_report/blob/main/Web_2.png)
 
 - Third step is to clean all "Applied steps" on the right of the power query editor
-![Web_3](![Web_2](https://github.com/OndrejZapletal99/Stock_report/blob/main/Web_2.png))
+![Web_3](https://github.com/OndrejZapletal99/Stock_report/blob/main/Web_3.png)
 
 
