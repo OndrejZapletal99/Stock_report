@@ -52,3 +52,47 @@ The data source is [Yahoo Finance](https://finance.yahoo.com/).
 23. Appanding all queries together by append queries
 
 ### 2.2 PowerBi date table
+For every PowerBI report is better to create your own date table and after that connect the date table with others tables by relations.
+1. Create a new table in PowerBI report.
+```
+Date table = CALENDAR(MINX(Appned_table,Appned_table[EndBranchprice.Date]), MAXX(Appned_table,Appned_table[EndBranchprice.Date]))
+```
+2. Create a new column for Year
+```
+Year = YEAR('Date table'[Date])
+```
+3. Create a new column for Month number
+```
+Month number = MONTH('Date table'[Date])
+```
+4. Create a new column for Month 
+```
+Month = FORMAT('Date table'[Month number],"MMM")
+```
+5. Create a new column for Day number
+```
+Day number = WEEKDAY(('Date table'[Date]),2)
+```
+6. Create a new column for Day 
+- There is one problem if you have monday as a first day of the week. It is necessary to use switch expresion.
+```
+Day = 
+SWITCH(
+    WEEKDAY('Date table'[Date],2),
+    1, "Monday",
+    2, "Tuesday",
+    3, "Wednesday",
+    4, "Thursday",
+    5, "Friday",
+    6, "Saturday",
+    7, "Sunday"
+)
+```
+7. Create a new column for Quarter
+```
+Quarter = CONCATENATE("Q",QUARTER('Date table'[Date].[Date]))
+```
+8. Create a new column for Week number
+```
+Week number = WEEKNUM('Date table'[Date],2)
+```
