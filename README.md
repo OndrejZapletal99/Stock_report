@@ -12,6 +12,7 @@
   - [2. Insert of the data](#2-insert-of-the-data)
     - [2.1. PowerQuery](#21-powerquerry)
     - [2.2 PowerBi date table](#22-powerbi-date-table)
+    - [2.3 Measures](#23-measures)
 ---
 ## 1. Introduction
 The purpose of this report is to create a complex overview of selected Stocks, ETFs, Crypto currencies.
@@ -95,4 +96,40 @@ Quarter = CONCATENATE("Q",QUARTER('Date table'[Date].[Date]))
 8. Create a new column for Week number
 ```
 Week number = WEEKNUM('Date table'[Date],2)
+```
+### 2.3 Measures
+1. MIN
+```
+MIN = MINX(Appned_table,Appned_table[adjclose])
+```
+2. MAX
+```
+MAX = MAXX(Appned_table,Appned_table[adjclose])
+```
+3. Last Date
+```
+Last date = LASTDATE(Appned_table[EndBranchprice.Date])
+```
+4. Last date value
+```
+Last date  value = CALCULATE(
+    [MAX],LASTDATE(Appned_table[EndBranchprice.Date]))
+```
+5. 52 Week max value
+```
+52 Week max value = CALCULATE(
+    [MAX], DATESBETWEEN('Date table'[Date],TODAY()-365,TODAY()))
+```
+6. 52 Week min value
+```
+52 Week min value = CALCULATE(
+    [MIN], DATESBETWEEN('Date table'[Date],TODAY()-365,TODAY()))
+```
+7. 52 Week max date
+```
+52 Week max date = LOOKUPVALUE(Appned_table[EndBranchprice.Date],Appned_table[adjclose],[52 Week max value])
+```
+8. 52 Week min date
+```
+52 Week min date = LOOKUPVALUE(Appned_table[EndBranchprice.Date],Appned_table[adjclose],[52 Week min value])
 ```
