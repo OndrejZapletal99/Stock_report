@@ -4,6 +4,7 @@
   - PowerQuery
   - Dax
   - Visualisation
+  - PowerBI report [**here**](https://github.com/OndrejZapletal99/Stock_report/blob/main/Stock.pbix)
 
 ---
 
@@ -14,7 +15,7 @@
     - [2.2 PowerBi date table](#22-powerbi-date-table)
     - [2.3 Measures](#23-measures)
     - [2.4 Sticker logo for slicer](#24-sticker-logo-for-slicer)
----
+    - [2.5 Graphic design and layout](#25-graphic-design-and-layout)
 ## 1. Introduction
 The purpose of this report is to create a complex overview of selected Stocks, ETFs, Crypto currencies.
 The data source is [Yahoo Finance](https://finance.yahoo.com/).
@@ -136,9 +137,14 @@ CALCULATE([MAX], last_date)
 ```
 52 Week min date = LOOKUPVALUE(Appned_table[EndBranchprice.Date],Appned_table[adjclose],[52 Week min value])
 ```
+9. Closed Value
+```
+Closed Value = SUM(Appned_table[adjclose])
+```
 ### 2.4 Sticker logo for slicer
 1. Find URL adresses for your selected stocks,ETFs etc.
 2. Create a new table with column for sticker shortcut and another column for URL.
 3. Connect the new table with existing table by relations.
 4. Create a visual--> "New slicer" and select sticker symbol from original table and URL column for images.
-
+### 2.5 Graphic design and layout
+Graphic design and layout according to your own settings and experience.
