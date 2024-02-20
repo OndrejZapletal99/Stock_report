@@ -13,6 +13,7 @@
     - [2.1. PowerQuery](#21-powerquerry)
     - [2.2 PowerBi date table](#22-powerbi-date-table)
     - [2.3 Measures](#23-measures)
+    - [2.4 Sticker logo for slicer](#24-sticker-logo-for-slicer)
 ---
 ## 1. Introduction
 The purpose of this report is to create a complex overview of selected Stocks, ETFs, Crypto currencies.
@@ -108,12 +109,14 @@ MAX = MAXX(Appned_table,Appned_table[adjclose])
 ```
 3. Last Date
 ```
-Last date = LASTDATE(Appned_table[EndBranchprice.Date])
+Last date = LASTDATE('Date table'[Date])
 ```
 4. Last date value
 ```
-Last date  value = CALCULATE(
-    [MAX],LASTDATE(Appned_table[EndBranchprice.Date]))
+Last date  value = 
+VAR last_date = (LASTDATE('Date table'[Date]))
+RETURN
+CALCULATE([MAX], last_date)
 ```
 5. 52 Week max value
 ```
@@ -133,3 +136,9 @@ Last date  value = CALCULATE(
 ```
 52 Week min date = LOOKUPVALUE(Appned_table[EndBranchprice.Date],Appned_table[adjclose],[52 Week min value])
 ```
+### 2.4 Sticker logo for slicer
+1. Find URL adresses for your selected stocks,ETFs etc.
+2. Create a new table with column for sticker shortcut and another column for URL.
+3. Connect the new table with existing table by relations.
+4. Create a visual--> "New slicer" and select sticker symbol from original table and URL column for images.
+
