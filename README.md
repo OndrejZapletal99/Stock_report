@@ -121,25 +121,45 @@ CALCULATE([MAX], last_date)
 ```
 5. 52 Week max value
 ```
-52 Week max value = CALCULATE(
-    [MAX], DATESBETWEEN('Date table'[Date],TODAY()-365,TODAY()))
+52 Week max value =
+CALCULATE (
+    [MAX],
+    DATESBETWEEN ( 'Date table'[Date], TODAY () - 365, TODAY () )
+)
 ```
 6. 52 Week min value
 ```
-52 Week min value = CALCULATE(
-    [MIN], DATESBETWEEN('Date table'[Date],TODAY()-365,TODAY()))
+52 Week min value =
+CALCULATE (
+    [MIN],
+    DATESBETWEEN ( 'Date table'[Date], TODAY () - 365, TODAY () )
+)
 ```
 7. 52 Week max date
 ```
-52 Week max date = LOOKUPVALUE(Appned_table[EndBranchprice.Date],Appned_table[adjclose],[52 Week max value])
+52 Week max date =
+LOOKUPVALUE (
+    Appned_table[EndBranchprice.Date],
+    Appned_table[adjclose], [52 Week max value],
+    Appned_table[StockSymbol], SELECTEDVALUE ( Appned_table[StockSymbol] )
+)
 ```
 8. 52 Week min date
 ```
-52 Week min date = LOOKUPVALUE(Appned_table[EndBranchprice.Date],Appned_table[adjclose],[52 Week min value])
+52 Week max date =
+LOOKUPVALUE (
+    Appned_table[EndBranchprice.Date],
+    Appned_table[adjclose], [52 Week max value],
+    Appned_table[StockSymbol], SELECTEDVALUE ( Appned_table[StockSymbol] )
+)
 ```
 9. Closed Value
 ```
 Closed Value = SUM(Appned_table[adjclose])
+```
+10. Y axis format = ([MAX]*1.4)
+```
+Y axis format = ([MAX]*1.4)
 ```
 ### 2.4 Sticker logo for slicer
 1. Find URL adresses for your selected stocks,ETFs etc.
