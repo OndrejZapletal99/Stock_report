@@ -5,7 +5,6 @@
   - Dax
   - Visualisation
   - PowerBI report [**here**](https://github.com/OndrejZapletal99/Stock_report/blob/main/Stock.pbix)
-
 ---
 
 - ## Table of content
